@@ -1,10 +1,11 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      style="background: #3d3d3d"
+      class="drawer-container"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
+      dark
       fixed
       app
     >
@@ -91,6 +92,9 @@ export default {
 };
 </script>
 <style scoped>
+.drawer-container {
+  background: #272727ff;
+}
 .title-decorators {
   border: solid;
   border-radius: 4px;
