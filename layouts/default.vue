@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
+      style="background: #3d3d3d"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -9,17 +10,18 @@
     >
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title style="text-align: center" class="text-h5 animate__animated animate__fadeInLeft">
-            <b style="font-family: Ms Madi; font-size: 2.5rem;color:#f2e9e4;">Diosma Café</b>
+          <v-list-item-title
+            class="drawer-title-container text-h5 animate__animated animate__fadeInLeft"
+          >
+            <b class="drawer-title-content">
+              <div class="title-decorators"></div>
+              Diosma Café
+              <div class="title-decorators"></div
+            ></b>
           </v-list-item-title>
-          <!--           <v-list-item-subtitle>
-            subtext
-          </v-list-item-subtitle> -->
         </v-list-item-content>
       </v-list-item>
-
       <v-divider></v-divider>
-
       <v-list dense nav>
         <v-list-item
           v-for="item in items"
@@ -28,32 +30,21 @@
           @click="drawer = false"
         >
           <v-list-item-icon>
-            <v-icon style="color:#f2e9e4;">{{ item.icon }}</v-icon>
+            <v-icon style="color: #f2e9e4">{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title style="color:#f2e9e4;">{{ item.title }}</v-list-item-title>
+            <v-list-item-title style="color: #f2e9e4">{{
+              item.title
+            }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <div style="width: 100%; display: flex; justify-content: flex-end;">
-        <div
-          style="
-            background: #f2e9e4;
-            border: solid;
-            height: 100px;
-            width: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            border-radius: 10px;
-          "
-        >
-          <v-icon style="font-size: 4rem; color: black; margin-bottom: 5px"
-            >mdi-coffee</v-icon
-          >
+      <div class="brand-icon-navbar">
+        <div class="brand-icon-container">
+          <v-icon class="brand-icon">mdi-coffee</v-icon>
         </div>
       </div>
     </v-app-bar>
@@ -100,27 +91,36 @@ export default {
 };
 </script>
 <style scoped>
-/* b:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: white;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  z-index: -2;
+.title-decorators {
+  border: solid;
+  border-radius: 4px;
 }
-b:after {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: white;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  z-index: -2;
-} */
-
+.drawer-title-container {
+  text-align: center;
+}
+.drawer-title-content {
+  font-family: Ms Madi;
+  font-size: 2.5rem;
+  color: #f2e9e4;
+}
+.brand-icon {
+  font-size: 4rem;
+  color: black;
+  margin-bottom: 5px;
+}
+.brand-icon-container {
+  background: #f2e9e4;
+  border: solid #f2e9e4;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 10px;
+}
+.brand-icon-navbar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 </style>

@@ -1,17 +1,18 @@
 <template>
   <v-footer dark padless>
-    <v-card dark style="width: 100vw" class="white--text text-center">
+    <v-card dark class="card-container white--text text-center">
       <v-card-text>
         <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
-          <v-icon style="color:#f2e9e4;" size="30px">
+          <v-icon class="main-font-color" size="30px">
             {{ icon }}
           </v-icon>
         </v-btn>
       </v-card-text>
     </v-card>
-    <v-card dark style="width: 100vw" class="white--text text-center">
-      <v-card-text dark >
-        <b style="color:#f2e9e4;">© {{ new Date().getFullYear() }}</b> — <strong>Diosma Café, Derechos reservados</strong>
+    <v-card dark class="card-container white--text text-center">
+      <v-card-text dark>
+        <b class="main-font-color">© {{ new Date().getFullYear() }}</b> —
+        <b class="main-font-color">Diosma Café, Derechos reservados</b>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -28,5 +29,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.main-font-color {
+  color: #f2e9e4;
+}
+.card-container {
+  width: 100vw;
+}
 </style>

@@ -5,13 +5,13 @@
         <div class="info-title">
           <h1>¡Bienvenido!</h1>
         </div>
-        <br/>
+        <br />
         <div class="info-body">
           <blockquote class="stacked">
             <p>Una taza de café está llena de ideas</p>
           </blockquote>
         </div>
-        <br/>
+        <br />
         <div class="menu-button-container">
           <button class="main-button menu-button">
             <a href="/menu">Menú</a>
@@ -37,6 +37,7 @@ export default {
   margin-top: 40px;
 }
 .main-container {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   color: #f2e9e4;
   min-height: 100vh;
   height: auto;
@@ -79,8 +80,7 @@ export default {
   text-align: center;
   padding: 20px 30px 20px 30px;
   border-radius: 5px;
-  background:
-    linear-gradient(to right, #f2e9e4 6px, transparent 6px) 0 0,
+  background: linear-gradient(to right, #f2e9e4 6px, transparent 6px) 0 0,
     linear-gradient(to right, #f2e9e4 6px, transparent 6px) 0 100%,
     linear-gradient(to left, #f2e9e4 6px, transparent 6px) 100% 0,
     linear-gradient(to left, #f2e9e4 6px, transparent 6px) 100% 100%,
@@ -90,7 +90,6 @@ export default {
     linear-gradient(to top, #f2e9e4 6px, transparent 6px) 100% 100%;
   background-repeat: no-repeat;
   background-size: 20px 20px;
-
 }
 
 .main-button.menu-button {

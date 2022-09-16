@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="gallery-main-container">
     <br />
     <div
       class="divider-container info-container animate__animated animate__fadeIn"
@@ -10,11 +10,11 @@
       <h1>Nuestros productos</h1>
     </div>
     <div
-    class="divider-container info-container animate__animated animate__fadeIn"
+      class="divider-container info-container animate__animated animate__fadeIn"
     >
-    <hr class="divider-item" />
-</div>
-<br/>
+      <hr class="divider-item" />
+    </div>
+    <br />
     <div
       class="gallery-container info-container animate__animated animate__fadeIn"
     >
@@ -71,7 +71,7 @@ export default {
   width: 90%;
   border-radius: 10px;
   border: solid 4px;
-  background:#f2e9e4 ;
+  background: #f2e9e4;
 }
 .info-title {
   color: #f2e9e4;
@@ -84,7 +84,7 @@ export default {
   width: 100%;
   display: block;
   object-fit: cover !important;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 .gallery-container {
   width: 90vw;
