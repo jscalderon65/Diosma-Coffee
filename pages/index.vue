@@ -1,35 +1,48 @@
 <template>
-  <div class="main-container">
-    <div class="info-container animate__animated animate__fadeIn">
-      <div style="margin-bottom: 10px;" class="info-title">
-        <h1>¡Bienvenido!</h1>
-      </div>
-      <div class="info-body">
-        <blockquote class="stacked">
-          <p>Una taza de café está llena de ideas</p>
-        </blockquote>
-      </div>
-      <div style="text-align: center;margin-top: 40px;">
-        <button class="green-button"><a href="/menu" class="manual-optin-trigger" data-optin-slug="atefh5rvxazforll">Menú</a></button>
+  <div>
+    <div class="main-container">
+      <div class="info-container animate__animated animate__fadeIn">
+        <div class="info-title">
+          <h1>¡Bienvenido!</h1>
+        </div>
+        <br/>
+        <div class="info-body">
+          <blockquote class="stacked">
+            <p>Una taza de café está llena de ideas</p>
+          </blockquote>
+        </div>
+        <br/>
+        <div class="menu-button-container">
+          <button class="main-button menu-button">
+            <a href="/menu">Menú</a>
+          </button>
+        </div>
       </div>
     </div>
+    <Gallery />
   </div>
 </template>
 
 <script>
-import VueArcText from "vue-arc-text";
+import Gallery from "../components/gallery.vue";
 
 export default {
-  components: { VueArcText },
+  components: { Gallery },
   name: "IndexPage",
 };
 </script>
 <style scoped>
+.menu-button-container {
+  text-align: center;
+  margin-top: 40px;
+}
 .main-container {
-  height: 100vh;
+  color: #f2e9e4;
+  min-height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("assets/Coffee.jpg");
   background-repeat: no-repeat;
@@ -37,7 +50,8 @@ export default {
 }
 
 .info-container {
-  margin-top: 20px;
+  width: 100%;
+  color: #f2e9e4;
   width: 300px;
   text-align: justify;
 }
@@ -47,62 +61,66 @@ export default {
 }
 
 .info-title {
+  margin-bottom: 10px;
+  color: #f2e9e4;
   display: flex;
   justify-content: center;
   align-content: end;
   font-family: Ms madi;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .info-body {
-  font-family: 'Permanent Marker';
+  color: #f2e9e4;
+  font-family: "Permanent Marker";
   font-size: 2rem;
 }
 .stacked {
   text-align: center;
-  border: solid 2px;
   padding: 20px 30px 20px 30px;
   border-radius: 5px;
-  box-shadow: 13px 13px 0 0 white, 15px 15px 0 0 white, 15px 11px 0 0 white,
-    11px 15px 0 0 white;
+  background:
+    linear-gradient(to right, #f2e9e4 6px, transparent 6px) 0 0,
+    linear-gradient(to right, #f2e9e4 6px, transparent 6px) 0 100%,
+    linear-gradient(to left, #f2e9e4 6px, transparent 6px) 100% 0,
+    linear-gradient(to left, #f2e9e4 6px, transparent 6px) 100% 100%,
+    linear-gradient(to bottom, #f2e9e4 6px, transparent 6px) 0 0,
+    linear-gradient(to bottom, #f2e9e4 6px, transparent 6px) 100% 0,
+    linear-gradient(to top, #f2e9e4 6px, transparent 6px) 0 100%,
+    linear-gradient(to top, #f2e9e4 6px, transparent 6px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+
 }
-button.green-button{
+
+.main-button.menu-button {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   width: 50%;
-  font-family: 'Permanent Marker';
+  font-family: "Permanent Marker";
   font-size: 1.5rem;
   padding: 7px 20px !important;
   border-radius: 5px;
   margin: 0px 0px 0px 20px;
-  background-color: rgba(255,255,255,0);
-  border: 3px solid white;
-  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 6px solid #f2e9e4;
   transition: 0.8s;
 }
 
-button.green-button a {
+.main-button.menu-button a {
   text-decoration: none;
-  color: #fff;
+  color: #f2e9e4;
 }
 
-button.green-button:hover{
-  background-color:  black;
+.main-button.menu-button:hover {
+  background-color: black;
   cursor: pointer;
- 
 }
-button.green-button:hover a{
-  color: white;
+.main-button.menu-button:hover a {
+  color: #f2e9e4;
 }
 @media (max-width: 600px) {
   .info-title {
     font-size: 2rem;
-  }
-
-  .main-container {
-    align-items: start;
-  }
-
-  .info-container {
-    margin-top: 100px;
   }
 }
 </style>

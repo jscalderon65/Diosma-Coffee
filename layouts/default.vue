@@ -10,7 +10,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title style="text-align: center" class="text-h5 animate__animated animate__fadeInLeft">
-            <b style="font-family: Ms Madi; font-size: 2.5rem">Diosma Café</b>
+            <b style="font-family: Ms Madi; font-size: 2.5rem;color:#f2e9e4;">Diosma Café</b>
           </v-list-item-title>
           <!--           <v-list-item-subtitle>
             subtext
@@ -28,23 +28,23 @@
           @click="drawer = false"
         >
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon style="color:#f2e9e4;">{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title style="color:#f2e9e4;">{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <div style="width: 100%; display: flex; justify-content: flex-end">
+      <div style="width: 100%; display: flex; justify-content: flex-end;">
         <div
           style="
+            background: #f2e9e4;
             border: solid;
             height: 100px;
             width: 100px;
-            background-color: aliceblue;
             display: flex;
             justify-content: center;
             align-items: flex-end;
