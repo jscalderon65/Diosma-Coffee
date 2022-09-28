@@ -1,25 +1,31 @@
 <template>
-  <div style="height: 100vh;display: flex;justify-content: center;align-items: center;">
-    <div style="text-align:center">
-      <img
-          src="/v.png"
-          alt="Vuetify.js"
-          class="mb-5"
-        >
-      <blockquote class="blockquote">
-          &#8220;First, solve the problem. Then, write the code.&#8221;
-          <footer>
-            <small>
-              <em>&mdash;John Johnson</em>
-            </small>
-          </footer>
-        </blockquote>
+  <div>
+    <div style="height: 100vh; display: flex; flex-flow: column">
+      <div class="cover" style="flex: 1"></div>
+      <div style="flex: 1"></div>
     </div>
-</div>
+    <div style="height: 100vh; display: flex; flex-flow: column">
+      <div class="cover" style="flex: 1"></div>
+      <div style="flex: 1"></div>
+    </div>
+    <div style="height: 100vh; display: flex; flex-flow: column">
+      <div class="cover" style="flex: 1"></div>
+      <div style="flex: 1"></div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'InspirePage'
-}
+  name: "InspirePage",
+};
 </script>
+<style scoped>
+.cover {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("assets/Coffee.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+}
+</style>

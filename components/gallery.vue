@@ -1,19 +1,6 @@
 <template>
   <div class="gallery-main-container">
-    <br />
-    <div
-      class="divider-container info-container animate__animated animate__fadeIn"
-    >
-      <hr class="divider-item" />
-    </div>
-    <div class="info-title info-container animate__animated animate__fadeIn">
-      <h1>Nuestros productos</h1>
-    </div>
-    <div
-      class="divider-container info-container animate__animated animate__fadeIn"
-    >
-      <hr class="divider-item" />
-    </div>
+    <MainTitle text="Nuestros productos" />
     <br />
     <div
       class="gallery-container info-container animate__animated animate__fadeIn"
@@ -34,7 +21,9 @@
 </template>
 
 <script>
+import MainTitle from "./mainTitle.vue";
 export default {
+  components: { MainTitle },
   mounted() {},
   beforeDestroy() {},
   data() {
@@ -63,22 +52,6 @@ export default {
 </script>
 
 <style scoped>
-.divider-container {
-  display: flex;
-  justify-content: center;
-}
-.divider-item {
-  width: 90%;
-  border-radius: 10px;
-  border: solid 4px;
-  background: #f2e9e4;
-}
-.info-title {
-  color: #f2e9e4;
-  text-align: center;
-  font-family: Ms madi;
-  font-size: 3rem;
-}
 .gallery-image {
   border-radius: 10px;
   width: 100%;
@@ -113,9 +86,6 @@ export default {
   .gallery-container {
     column-count: 2;
     column-gap: 10px;
-  }
-  .info-title {
-    font-size: 2rem;
   }
 }
 </style>

@@ -1,21 +1,6 @@
 <template>
   <div class="menu-container">
-    <br />
-    <br />
-    <div
-      class="divider-container info-container animate__animated animate__fadeIn"
-    >
-      <hr class="divider-item" />
-    </div>
-    <div class="info-title info-container animate__animated animate__fadeIn">
-      <h1>Menú</h1>
-    </div>
-    <div
-      class="divider-container info-container animate__animated animate__fadeIn"
-    >
-      <br />
-      <hr class="divider-item" />
-    </div>
+    <MainTitle text="Menú" />
     <div
       class="category-container"
       style="margin-top: 20px; margin-bottom: 50px"
@@ -82,20 +67,17 @@
         </div>
       </div>
     </div>
-    <div style="text-align: center">
-      <button class="main-button menu-button">
-        <a href="/menu">¡Recomiendame algo!</a>
-      </button>
-    </div>
+    <MainButton text="¡Recomiendame algo!" />
     <br />
     <br />
   </div>
 </template>
 
 <script>
+import MainTitle from "~/components/mainTitle.vue";
+import MainButton from "~/components/mainButton.vue";
 export default {
-  mounted() {},
-  beforeDestroy() {},
+  components: { MainButton, MainTitle },
   data() {
     return {
       categories: [
@@ -298,6 +280,9 @@ export default {
 @media (max-width: 600px) {
   .title-category {
     text-align: center;
+  }
+  .main-button.menu-button {
+    font-size: 1rem;
   }
 }
 </style>

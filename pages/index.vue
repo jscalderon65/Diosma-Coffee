@@ -12,30 +12,30 @@
           </blockquote>
         </div>
         <br />
-        <div class="menu-button-container">
-          <button class="main-button menu-button">
-            <a href="/menu">Menú</a>
-          </button>
-        </div>
+        <MainButton
+          :style="'margin-top:40px'"
+          text="Menú"
+          :isRedirect="true"
+          redirectPath="/menu"
+        />
       </div>
     </div>
     <Gallery />
+    <FindUs />
   </div>
 </template>
 
 <script>
+import MainButton from "~/components/mainButton.vue";
 import Gallery from "../components/gallery.vue";
+import FindUs from "../components/findUs.vue";
 
 export default {
-  components: { Gallery },
+  components: { Gallery, FindUs, MainButton },
   name: "IndexPage",
 };
 </script>
 <style scoped>
-.menu-button-container {
-  text-align: center;
-  margin-top: 40px;
-}
 .main-container {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   color: #f2e9e4;
@@ -90,32 +90,6 @@ export default {
     linear-gradient(to top, #f2e9e4 6px, transparent 6px) 100% 100%;
   background-repeat: no-repeat;
   background-size: 20px 20px;
-}
-
-.main-button.menu-button {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  width: 50%;
-  font-family: "Permanent Marker";
-  font-size: 1.5rem;
-  padding: 7px 20px !important;
-  border-radius: 5px;
-  margin: 0px 0px 0px 20px;
-  background-color: rgba(255, 255, 255, 0);
-  border: 6px solid #f2e9e4;
-  transition: 0.8s;
-}
-
-.main-button.menu-button a {
-  text-decoration: none;
-  color: #f2e9e4;
-}
-
-.main-button.menu-button:hover {
-  background-color: black;
-  cursor: pointer;
-}
-.main-button.menu-button:hover a {
-  color: #f2e9e4;
 }
 @media (max-width: 600px) {
   .info-title {
