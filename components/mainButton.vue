@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-button-container" :style="style">
+  <div class="menu-button-container" :style="styleItems">
     <button v-if="isRedirect" class="main-button menu-button">
       <a :href="redirectPath">{{ text }}</a>
     </button>
@@ -27,7 +27,7 @@ export default {
       type: String,
       default: "/",
     },
-    style: {
+    styleItems: {
       required: false,
       type: String,
       default: "",
