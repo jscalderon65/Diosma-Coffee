@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-container-find-us">
     <MainTitle text="!Donde encontrarnos!" />
     <br />
     <div class="info-container">
@@ -133,13 +133,13 @@ iframe {
   align-items: center;
   flex-flow: column;
 }
-.main-container {
+.main-container-find-us {
   min-height: 100vh;
   height: auto;
   display: flex;
   flex-flow: column;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("assets/Coffee.jpg");
+    url("assets/Diosma.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

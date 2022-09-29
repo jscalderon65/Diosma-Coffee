@@ -13,7 +13,7 @@
         </div>
         <br />
         <MainButton
-          :styleItems="'margin-top:40px'"
+          :styleItems="'margin-top:30px'"
           text="Menú"
           :isRedirect="true"
           redirectPath="/menu"

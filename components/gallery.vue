@@ -29,21 +29,34 @@ export default {
   data() {
     return {
       imgsArr: [
-        { src: "https://picsum.photos/500/300", href: "" },
-        { src: "https://picsum.photos/500/600", href: "" },
-        { src: "https://picsum.photos/700/300", href: "" },
-        { src: "https://picsum.photos/300/800", href: "" },
-        { src: "https://picsum.photos/600/800", href: "" },
-        { src: "https://picsum.photos/700/300", href: "" },
-        { src: "https://picsum.photos/200/300", href: "" },
-        { src: "https://picsum.photos/100/200", href: "" },
-        { src: "https://picsum.photos/500/800", href: "" },
-        { src: "https://picsum.photos/300/800", href: "" },
-        { src: "https://picsum.photos/600/800", href: "" },
-        { src: "https://picsum.photos/700/300", href: "" },
-        { src: "https://picsum.photos/200/300", href: "" },
-        { src: "https://picsum.photos/100/200", href: "" },
-        { src: "https://picsum.photos/500/800", href: "" },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipMnovizSdDk33mFeq9IeTSp5f1KJzGUjfo4RJ44=w660-h1087-p-k-no",
+          href: "",
+        },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipOFfds77pt9e11V0kFz-fAe7yzdM9pvD30wRI7U=w660-h1087-p-k-no",
+          href: "",
+        },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipOFfds77pt9e11V0kFz-fAe7yzdM9pvD30wRI7U=w660-h1087-p-k-no",
+          href: "",
+        },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipPmvjvj6Sdf7N7vXUPh3rC1Ih4jeBnS7hMNClpl=w660-h353-p-k-no",
+          href: "",
+        },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipOEp0tTSaideLWudUwo5Dkn6urbDTbfm1gCQC3_=w660-h1087-p-k-no",
+          href: "",
+        },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipOdqOQWjD8ZaMQgdYlgLaodrKeDMZfgZVizhHeM=w660-h1087-p-k-no",
+          href: "",
+        },
+        {
+          src: "https://lh5.googleusercontent.com/p/AF1QipPdwUUt-OVwJK4xvJ7KgWA3sd7ADuy8J80G7q8m=w660-h1087-p-k-no",
+          href: "",
+        },
       ],
     };
   },
