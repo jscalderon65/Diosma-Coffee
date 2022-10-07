@@ -23,6 +23,10 @@ export default {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Permanent Marker:wght@400;500;700&display=swap&display=swap",
       },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap&display=swap",
+      },
     ],
   },
 
