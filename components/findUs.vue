@@ -19,7 +19,6 @@
       <v-card>
         <v-card-title class="share-modal-title">
           <h1>¡Compartenos o recomiendanos!</h1>
-          <br />
         </v-card-title>
         <br />
         <v-card-text>
@@ -113,6 +112,7 @@ iframe {
   flex: 1;
 }
 .share-modal-title {
+  text-align: center;
   font-family: Ms madi !important;
   display: flex;
   justify-content: center;

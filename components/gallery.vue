@@ -3,18 +3,26 @@
     <MainTitle text="Nuestros productos" />
     <br />
     <div
+      v-if="loadingGallery || imgsArr.length === 0"
+      class="linear-loading-container"
+    >
+      <v-progress-linear
+        class="linear-loading"
+        indeterminate
+        color="white"
+      ></v-progress-linear>
+      <br />
+    </div>
+    <div
       class="gallery-container info-container animate__animated animate__fadeIn"
+      v-if="imgsArr.length > 0"
     >
       <div
         class="image-container"
         v-for="(image, index) in imgsArr"
         :key="index"
       >
-        <v-img
-          class="gallery-image"
-          :src="image.src"
-          lazy-src="https://picsum.photos/500/600"
-        />
+        <v-img class="gallery-image" :src="image.serverUrl" />
       </div>
     </div>
   </div>
@@ -28,39 +36,32 @@ export default {
   beforeDestroy() {},
   data() {
     return {
-      imgsArr: [
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipMnovizSdDk33mFeq9IeTSp5f1KJzGUjfo4RJ44=w660-h1087-p-k-no",
-          href: "",
-        },
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipOFfds77pt9e11V0kFz-fAe7yzdM9pvD30wRI7U=w660-h1087-p-k-no",
-          href: "",
-        },
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipOFfds77pt9e11V0kFz-fAe7yzdM9pvD30wRI7U=w660-h1087-p-k-no",
-          href: "",
-        },
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipPmvjvj6Sdf7N7vXUPh3rC1Ih4jeBnS7hMNClpl=w660-h353-p-k-no",
-          href: "",
-        },
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipOEp0tTSaideLWudUwo5Dkn6urbDTbfm1gCQC3_=w660-h1087-p-k-no",
-          href: "",
-        },
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipOdqOQWjD8ZaMQgdYlgLaodrKeDMZfgZVizhHeM=w660-h1087-p-k-no",
-          href: "",
-        },
-        {
-          src: "https://lh5.googleusercontent.com/p/AF1QipPdwUUt-OVwJK4xvJ7KgWA3sd7ADuy8J80G7q8m=w660-h1087-p-k-no",
-          href: "",
-        },
-      ],
+      imgsArr: [],
+      loadingGallery: false,
     };
   },
-  methods: {},
+  created() {
+    this.getImages();
+  },
+  methods: {
+    async getGalleryData() {
+      const response = await this.$fire.firestore
+        .collection("Gallery")
+        .doc("Images")
+        .get();
+      return response.data().data;
+    },
+    async getImages() {
+      try {
+        this.loadingGallery = true;
+        this.imgsArr = await this.getGalleryData();
+        this.loadingGallery = false;
+      } catch (error) {
+        this.loadingGallery = false;
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
 
@@ -79,7 +80,14 @@ export default {
   column-count: 4;
   column-gap: 10px;
 }
-
+.linear-loading-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.linear-loading {
+  width: 90%;
+}
 .image-container {
   margin: 0;
   display: grid;

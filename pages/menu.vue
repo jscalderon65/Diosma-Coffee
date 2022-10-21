@@ -1,10 +1,13 @@
 <template>
   <div class="menu-container">
     <MainTitle text="Menú" />
+    <div v-if="loadingData || products.length === 0">
+      <br />
+      <v-progress-linear indeterminate color="white"></v-progress-linear>
+    </div>
     <div
-      class="category-container"
-      style="margin-top: 20px; margin-bottom: 50px"
-      v-for="(category, index) in categories"
+      class="category-main-container"
+      v-for="(category, index) in products"
       :key="index"
     >
       <div>
@@ -13,61 +16,82 @@
             class="title-category info-container animate__animated animate__fadeIn"
           >
             <h2 class="decorated title-category">
-              <span>{{ category.name }}</span>
+              <span>{{ category.section }}</span>
             </h2>
           </div>
         </div>
-        <div
-          style="
-            display: grid;
-            grid-gap: 10px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-auto-rows: 1fr;
-            justify-items: center;
-            padding-top: 20px;
-            padding-bottom: 20px;
-          "
-        >
+        <div class="category-grid-container">
           <div
-            v-for="(product, indexProduct) in category.items"
+            v-for="(product, indexProduct) in category.products"
             :key="indexProduct"
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 160px;
-              height: auto;
-              padding-bottom: 10px;
-              padding-top: 10px;
-              border-radius: 10px;
-              flex-flow: column;
-            "
+            class="card-category-container"
           >
             <v-img
-              style="
-                text-align: center;
-                width: 160px;
-                height: 160px;
-                border-radius: 100%;s
-              "
+              class="product-card-image"
               :key="indexProduct"
-              class="gallery-image"
-              :src="product.src"
+              :src="product.imageUrl"
               lazy-src="https://picsum.photos/500/600"
             />
             <br />
-            <div style="border-radius: 10px; text-align: center; width: 100%">
-              <b style="font-family: Ms Madi; font-size: 1.5rem">{{
-                product.info.name
-              }}</b>
+            <div class="card-category-text">
+              <b class="card-category-name">{{ product.name }}</b>
               <br />
-              <b>{{ product.info.price }}</b>
+              <b>{{
+                new Intl.NumberFormat("en", {
+                  style: "currency",
+                  currency: "COP",
+                  maximumFractionDigits: 0,
+                }).format(product.price)
+              }}</b>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <MainButton text="¡Recomiendame algo!" />
+    <div class="suggestion-container">
+      <v-btn
+        v-if="!loadingData || products.length > 0"
+        @click="openSuggestionDialog"
+        class="suggestion-btn"
+        outlined
+      >
+        <v-icon style="margin-right: 10px">mdi-wallet-giftcard</v-icon>
+        Recomiendame algo</v-btn
+      >
+    </div>
+    <v-dialog v-model="dialog" width="500">
+      <v-card>
+        <v-card-title class="share-modal-title">
+          <h1>¡Mira lo que te recomiendo hoy!</h1>
+        </v-card-title>
+        <br />
+        <v-card-text v-if="suggestionProduct" class="dialog-suggestion-text">
+          <div class="card-category-container">
+            <v-img
+              class="product-card-image"
+              :src="suggestionProduct.imageUrl"
+            />
+            <br />
+            <div class="card-category-text">
+              <b class="card-category-name">{{ suggestionProduct.name }}</b>
+              <br />
+              <b>{{
+                new Intl.NumberFormat("en", {
+                  style: "currency",
+                  currency: "COP",
+                  maximumFractionDigits: 0,
+                }).format(suggestionProduct.price)
+              }}</b>
+            </div>
+          </div>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn @click="closeDialog"> Cerrar </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <br />
     <br />
   </div>
@@ -80,145 +104,112 @@ export default {
   components: { MainButton, MainTitle },
   data() {
     return {
-      categories: [
-        {
-          name: "Café",
-          items: [
-            {
-              src: "https://picsum.photos/500/300",
-              info: {
-                name: "Café",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/500/300",
-              info: {
-                name: "Café",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/500/600",
-              info: {
-                name: "Café",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/700/300",
-              info: {
-                name: "Café",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/300/800",
-              info: {
-                name: "Café",
-                price: "20.000",
-              },
-            },
-          ],
-        },
-        {
-          name: "Alimentos",
-          items: [
-            {
-              src: "https://picsum.photos/500/300",
-              info: {
-                name: "Alimentos",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/500/600",
-              info: {
-                name: "Alimentos",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/700/300",
-              info: {
-                name: "Alimentos",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/300/800",
-              info: {
-                name: "Alimentos",
-                price: "20.000",
-              },
-            },
-          ],
-        },
-        {
-          name: "Licores",
-          items: [
-            {
-              src: "https://picsum.photos/500/300",
-              info: {
-                name: "Licores",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/500/600",
-              info: {
-                name: "Licores",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/700/300",
-              info: {
-                name: "Licores",
-                price: "20.000",
-              },
-            },
-            {
-              src: "https://picsum.photos/300/800",
-              info: {
-                name: "Licores",
-                price: "20.000",
-              },
-            },
-          ],
-        },
-      ],
+      products: [],
+      loadingData: false,
+      dialog: false,
+      suggestionProduct: null,
     };
   },
-  methods: {},
+  created() {
+    this.getProducts();
+  },
+  methods: {
+    async getProductsData() {
+      const response = await this.$fire.firestore
+        .collection("Products")
+        .doc("Menu")
+        .get();
+      return response.data().data;
+    },
+    async getProducts() {
+      try {
+        this.loadingData = true;
+        this.products = await this.getProductsData();
+        this.loadingData = false;
+      } catch (error) {
+        console.log(error);
+        console.log(error);
+        this.loadingData = false;
+      }
+    },
+    randomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+    openSuggestionDialog() {
+      const categoryLength = this.products.length;
+      const randomCategory = this.randomNumber(0, categoryLength - 1);
+      const productLength = this.products[randomCategory].products.length;
+      const randomProduct = this.randomNumber(0, productLength - 1);
+      this.suggestionProduct =
+        this.products[randomCategory].products[randomProduct];
+      this.dialog = true;
+    },
+    closeDialog() {
+      this.dialog = false;
+    },
+  },
 };
 </script>
 
 <style>
-.main-button.menu-button {
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  width: 50%;
-  font-family: "Permanent Marker";
+.dialog-suggestion-text {
+  display: flex;
+  justify-content: center;
+}
+.suggestion-btn {
+  font-family: Permanent Marker;
+  font-size: 1.2rem;
+  margin: autos;
+}
+.suggestion-container {
+  display: flex;
+  justify-content: center;
+}
+.share-modal-title {
+  text-align: center;
+  font-family: Ms madi !important;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.card-category-name {
+  font-family: Ms Madi;
   font-size: 1.5rem;
-  padding: 7px 20px !important;
-  border-radius: 5px;
-  margin: 0px 0px 0px 20px;
-  background-color: rgba(255, 255, 255, 0);
-  border: 6px solid #f2e9e4;
-  transition: 0.8s;
 }
-
-.main-button.menu-button a {
-  text-decoration: none;
-  color: #f2e9e4;
+.card-category-text {
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
 }
-
-.main-button.menu-button:hover {
-  background-color: black;
-  cursor: pointer;
+.product-card-image {
+  text-align: center;
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
 }
-.main-button.menu-button:hover a {
-  color: #f2e9e4;
+.category-main-container {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.category-grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 1fr;
+  justify-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.card-category-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  flex-flow: column;
 }
 .product-card {
   border: solid;
