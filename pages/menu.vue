@@ -10,7 +10,7 @@
       v-for="(category, index) in products"
       :key="index"
     >
-      <div>
+      <div v-if="category.products.length > 0">
         <div>
           <div
             class="title-category info-container animate__animated animate__fadeIn"
@@ -85,6 +85,9 @@
             </div>
           </div>
         </v-card-text>
+        <v-card-text v-else class="dialog-suggestion-text">
+          <div>No tenemos productos disponibles en este momento :c</div>
+        </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -125,6 +128,12 @@ export default {
       try {
         this.loadingData = true;
         this.products = await this.getProductsData();
+        console.log(this.products);
+        this.products = this.products.map((pr) => {
+          pr.products = pr.products.filter((p) => p.isAvailable === true);
+          return pr;
+        });
+        console.log(this.products);
         this.loadingData = false;
       } catch (error) {
         console.log(error);

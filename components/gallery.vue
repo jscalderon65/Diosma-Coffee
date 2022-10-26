@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery-main-container">
+  <div v-if="imgsArr.length > 0" class="gallery-main-container">
     <MainTitle text="Nuestros productos" />
     <br />
     <div
@@ -26,6 +26,7 @@
       </div>
     </div>
   </div>
+  <div v-else></div>
 </template>
 
 <script>
