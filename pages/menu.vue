@@ -1,9 +1,14 @@
 <template>
   <div class="menu-container">
     <MainTitle text="Menú" />
-    <div v-if="loadingData || products.length === 0">
+    <div style="text-align: center" v-if="loadingData || products.length === 0">
       <br />
-      <v-progress-linear indeterminate color="white"></v-progress-linear>
+      <br />
+      <v-progress-circular
+        :size="100"
+        color="white"
+        indeterminate
+      ></v-progress-circular>
     </div>
     <div
       class="category-main-container"
@@ -20,7 +25,9 @@
             </h2>
           </div>
         </div>
-        <div class="category-grid-container">
+        <div
+          class="category-grid-container animate__animated animate__fadeInUp"
+        >
           <div
             v-for="(product, indexProduct) in category.products"
             :key="indexProduct"
@@ -30,7 +37,7 @@
               class="product-card-image"
               :key="indexProduct"
               :src="product.imageUrl"
-              lazy-src="https://picsum.photos/500/600"
+              lazy-src="https://picsum.photos/200/300/?blur=10"
             />
             <br />
             <div class="card-category-text">
@@ -70,6 +77,7 @@
             <v-img
               class="product-card-image"
               :src="suggestionProduct.imageUrl"
+              lazy-src="https://picsum.photos/200/300/?blur=10"
             />
             <br />
             <div class="card-category-text">
@@ -182,8 +190,8 @@ export default {
   width: 100%;
 }
 .card-category-name {
-  font-family: Ms Madi;
-  font-size: 1.5rem;
+  font-family: Permanent Marker;
+  font-size: 1rem;
 }
 .card-category-text {
   border-radius: 10px;
@@ -191,6 +199,7 @@ export default {
   width: 100%;
 }
 .product-card-image {
+  border: solid;
   text-align: center;
   width: 160px;
   height: 160px;

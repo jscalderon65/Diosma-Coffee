@@ -22,7 +22,11 @@
         v-for="(image, index) in imgsArr"
         :key="index"
       >
-        <v-img class="gallery-image" :src="image.serverUrl" />
+        <v-img
+          class="gallery-image"
+          lazy-src="https://picsum.photos/200/300/?blur=10"
+          :src="image.serverUrl"
+        />
       </div>
     </div>
   </div>
@@ -69,6 +73,8 @@ export default {
 <style scoped>
 .gallery-image {
   border-radius: 10px;
+  border: solid;
+  min-height: 50px;
   width: 100%;
   display: block;
   object-fit: cover !important;

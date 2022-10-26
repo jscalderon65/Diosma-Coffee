@@ -2,36 +2,19 @@
   <div class="about-container animate__animated animate__fadeIn">
     <MainTitle text="Conoce un poco de nosotros" />
     <br />
-    <div
-      style="
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        flex-flow: column;
-      "
-    >
+    <div class="text-body-container">
       <div>
         <v-img
-          style="width: 200px; height: 200px; border-radius: 100%"
+          class="image-about-us"
           src="https://picsum.photos/500/600"
-          lazy-src="https://picsum.photos/500/600"
+          lazy-src="https://picsum.photos/200/300/?blur=10"
         />
       </div>
       <br />
-      <div
-        style="
-          width: 100%;
-          display: flex;
-          align-items: center;
-          flex-flow: column;
-        "
-      >
+      <div class="about-us-container-text">
         <h1 class="about-subtitle">¿Quienes somos?</h1>
         <br />
-        <div
-          class="about-body-text"
-          style="width: 60%; text-align: justify; font-family: Roboto"
-        >
+        <div class="list-">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. A, suscipit
             voluptate dolores quos placeat laudantium eaque ut tempore delectus
@@ -48,31 +31,15 @@
         </div>
       </div>
       <br />
-      <div
-        style="
-          width: 100%;
-          display: flex;
-          align-items: center;
-          flex-flow: column;
-        "
-      >
+      <div class="our-history">
         <h1 class="about-subtitle">Nuestra historia</h1>
         <br />
-        <div
-          class="about-body-text"
-          style="width: 90%; text-align: justify; font-family: Roboto"
-        >
+        <div class="about-list-body-text">
           <v-timeline :reverse="reverse" :dense="$vuetify.breakpoint.smAndDown">
             <v-timeline-item v-for="n in 4" :key="n" color="white">
-              <span
-                style="font-family: Ms Madi; font-size: 2rem"
-                slot="opposite"
-                >202{{ n }}</span
-              >
+              <span class="about-list-date" slot="opposite">202{{ n }}</span>
               <v-card class="elevation-2">
-                <v-card-title
-                  style="font-family: Permanent Marker; text-align: center"
-                >
+                <v-card-title class="about-list-title">
                   Lorem ipsum
                 </v-card-title>
                 <v-card-text>
@@ -81,12 +48,12 @@
                   Est et nobis iisque percipit, an vim zril disputando
                   voluptatibus, vix an salutandi sententiae.
                 </v-card-text>
-                <div style="display: flex; justify-content: center">
+                <div class="about-list-image-container">
                   <div>
                     <v-img
-                      style="width: 160px; height: 160px; border-radius: 100%"
+                      class="about-list-image-body"
                       src="https://picsum.photos/500/600"
-                      lazy-src="https://picsum.photos/500/600"
+                      lazy-src="https://picsum.photos/200/300/?blur=10"
                     />
                   </div>
                 </div>
@@ -109,6 +76,53 @@ export default {
 };
 </script>
 <style scoped>
+.about-list-image-body {
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  border: solid;
+}
+.about-list-image-container {
+  display: flex;
+  justify-content: center;
+}
+.about-list-title {
+  font-family: Permanent Marker;
+  text-align: center;
+}
+.about-list-date {
+  font-family: Ms Madi;
+  font-size: 2rem;
+}
+.about-list-body-text {
+  width: 90%;
+  text-align: justify;
+  font-family: Roboto;
+}
+.our-history {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.about-us-container-text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.image-about-us {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  border: solid;
+}
+.text-body-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
 .left {
   display: flex;
   align-items: center;
@@ -156,10 +170,13 @@ export default {
   font-family: "Permanent Marker";
   font-size: 2rem;
 }
-.about-body-text {
-}
 .about-container {
   padding: 20px;
+}
+.list- {
+  width: 60%;
+  text-align: justify;
+  font-family: Robotos;
 }
 .cover {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),

@@ -2,22 +2,24 @@
   <div>
     <div class="main-container">
       <div class="info-container animate__animated animate__fadeIn">
-        <div class="info-title">
+        <div class="info-title animate__animated animate__fadeInLeft">
           <h1>¡Bienvenido!</h1>
         </div>
         <br />
-        <div class="info-body">
+        <div class="info-body animate__animated animate__fadeInRight">
           <blockquote class="stacked">
             <p>Una taza de café está llena de ideas</p>
           </blockquote>
         </div>
         <br />
-        <MainButton
-          :styleItems="'margin-top:30px'"
-          text="Menú"
-          :isRedirect="true"
-          redirectPath="/menu"
-        />
+        <div class="animate__animated animate__fadeIn">
+          <MainButton
+            :styleItems="'margin-top:30px'"
+            text="Menú"
+            :isRedirect="true"
+            redirectPath="/menu"
+          />
+        </div>
       </div>
     </div>
     <Gallery />
