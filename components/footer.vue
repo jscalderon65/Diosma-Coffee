@@ -2,10 +2,17 @@
   <v-footer dark padless>
     <v-card dark class="card-container white--text text-center">
       <v-card-text>
-        <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
-          <v-icon class="main-font-color" size="30px">
-            {{ icon }}
-          </v-icon>
+        <v-btn
+          v-for="(social, index) in icons"
+          :key="index"
+          class="mx-4 white--text"
+          icon
+        >
+          <a :href="social.redirect" target="_blank">
+            <v-icon class="main-font-color" size="30px">
+              {{ social.icon }}
+            </v-icon>
+          </a>
         </v-btn>
       </v-card-text>
     </v-card>
@@ -23,7 +30,17 @@ export default {
   name: "Footer",
   data() {
     return {
-      icons: ["mdi-facebook", "mdi-whatsapp", "mdi-gmail", "mdi-instagram"],
+      icons: [
+        /* "mdi-instagram" */
+        /* "mdi-facebook" */ {
+          icon: "mdi-whatsapp",
+          redirect: "https://api.whatsapp.com/send?phone=3132496292",
+        },
+        {
+          icon: "mdi-gmail",
+          redirect: "mailto:diosmacafe@gmail.com",
+        },
+      ],
     };
   },
 };
@@ -35,5 +52,9 @@ export default {
 }
 .card-container {
   width: 100vw;
+}
+a {
+  color: inherit !important;
+  text-decoration: inherit;
 }
 </style>
